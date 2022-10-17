@@ -2,6 +2,9 @@ FROM php:8.0-fpm-alpine3.16
 
 LABEL Maintainer="team tvb-sz<nmg-sz@tvb.com>" Description="Nginx & PHP-FPM 8.0 based on Alpine Linux."
 
+ARG TARGETOS
+ARG TARGETARCH
+
 # Install php extension
 COPY install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions && \

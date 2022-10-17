@@ -24,5 +24,5 @@ jobs:
       - name: Build docker image
         run: |
           version=`echo ${{ github.ref_name }} | sed -e "s/^v//"`
-          docker buildx build --platform linux/386,linux/amd64,linux/ppc64le,linux/s390x -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
+          docker buildx build --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
           docker image ls
