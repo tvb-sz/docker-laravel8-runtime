@@ -13,6 +13,6 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
 
 # Install software
 RUN apk update && \
-	apk add --no-cache install -y supervisor nginx && \
+	apk add --no-cache supervisor nginx && \
 	rm -rf /var/cache/apk/* && \
 	rm -rf /etc/nginx/sites-enabled/*
