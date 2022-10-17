@@ -7,7 +7,6 @@ on:
 
 jobs:
   build-and-release:
-
     - name: Set up Docker Buildx
       id: buildx
       uses: docker/setup-buildx-action@v2
