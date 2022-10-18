@@ -9,7 +9,7 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -24,8 +24,16 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_NAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build docker image
-        run: |
-          version=`echo ${{ github.ref_name }} | sed -e "s/^v//"`
-          docker buildx build --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
-          docker image ls
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
+          push: true
+          tags: nmgsz/docker-laravel8-runtime:latest
+
+#      - name: Build docker image
+#        run: |
+#          version=`echo ${{ github.ref_name }} | sed -e "s/^v//"`
+#          docker buildx build --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
+#          docker image ls
