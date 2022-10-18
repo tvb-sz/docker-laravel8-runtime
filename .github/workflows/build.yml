@@ -43,6 +43,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
           push: true
-          tags:
-            nmgsz/docker-laravel8-runtime:${{ steps.meta.outputs.version }}
-            nmgsz/docker-laravel8-runtime:latest
+          tags: nmgsz/docker-laravel8-runtime:${{ steps.meta.outputs.version }},nmgsz/docker-laravel8-runtime:latest
