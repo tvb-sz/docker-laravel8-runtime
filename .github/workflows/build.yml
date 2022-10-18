@@ -25,10 +25,16 @@ jobs:
         run: |
           version=`echo ${{ github.ref_name }} | sed -e "s/^v//"`
           docker buildx build --platform linux/386 -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
+          docker buildx prune -a
           docker buildx build --platform linux/amd64 -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
+          docker buildx prune -a
           docker buildx build --platform linux/arm/v6 -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
+          docker buildx prune -a
           docker buildx build --platform linux/arm/v7 -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
+          docker buildx prune -a
           docker buildx build --platform linux/arm64/v8 -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
+          docker buildx prune -a
           docker buildx build --platform linux/ppc64le -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
+          docker buildx prune -a
           docker buildx build --platform linux/s390x -t nmgsz/docker-laravel8-runtime:${version} -t nmgsz/docker-laravel8-runtime:latest . --push
           docker image ls
