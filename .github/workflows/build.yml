@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     tags:
-      - '*'
+      - 'v*.*.*'
 
 jobs:
   build-and-release:
@@ -24,10 +24,23 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_NAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
           push: true
-          tags: nmgsz/docker-laravel8-runtime:latest
+          tags:
+            nmgsz/docker-laravel8-runtime:${{ steps.meta.outputs.version }}
+            nmgsz/docker-laravel8-runtime:latest
