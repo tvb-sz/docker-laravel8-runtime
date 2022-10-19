@@ -15,11 +15,13 @@ because alpine 3.16 does not have supervisor package, see this [Link](https://pk
 
 ````
 [PHP Modules]
+bcmath
 Core
 ctype
 curl
 date
 dom
+exif
 fileinfo
 filter
 ftp

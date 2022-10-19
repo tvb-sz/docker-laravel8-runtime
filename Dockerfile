@@ -7,7 +7,7 @@ RUN apk update && \
 	apk add libpng libpng-dev zlib zlib-dev oniguruma oniguruma-dev libjpeg-turbo-dev libpng-dev freetype-dev libzip libzip-dev supervisor nginx && \
 	docker-php-ext-configure gd --with-freetype --with-jpeg && \
 	yes "" | pecl install redis && \
-	docker-php-ext-install -j5 gd mbstring mysqli pdo pdo_mysql opcache sockets zip && \
+	docker-php-ext-install -j5 gd mbstring mysqli pdo pdo_mysql opcache sockets zip bcmath exif && \
     docker-php-ext-enable redis && \
 	rm -rf /var/cache/apk/* && \
 	rm -rf /etc/nginx/sites-enabled/* && \
