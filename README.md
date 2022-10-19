@@ -4,8 +4,10 @@
 
 # Image info
 
-* Base: [php:8.0-fpm-alpine3.16](https://hub.docker.com/_/php/tags?page=1&name=8.0-fpm)
+* Base: [php:8.0-fpm-alpine3.15](https://hub.docker.com/_/php/tags?page=1&name=8.0-fpm)
 * Repo: [docker-laravel8-runtime](https://hub.docker.com/repository/docker/nmgsz/docker-laravel8-runtime)
+
+because alpine 3.16 does not have supervisor package, see this [Link](https://pkgs.alpinelinux.org/packages?name=supervisor&branch=v3.16&repo=&arch=x86&maintainer=), use temporarily alpine3.15
 
 # ENV
 
