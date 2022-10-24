@@ -2,6 +2,9 @@ FROM php:8.0-fpm-alpine3.15
 
 LABEL Maintainer="team tvb-sz<nmg-sz@tvb.com>" Description="Nginx & PHP-FPM 8.0 based on Alpine Linux."
 
+# Basic workdir
+WORKDIR /srv
+
 # Install php extension supervisor and nginx
 RUN apk update && \
 	apk add libpng libpng-dev zlib zlib-dev oniguruma oniguruma-dev libjpeg-turbo-dev libpng-dev freetype-dev libzip libzip-dev supervisor nginx bash && \
