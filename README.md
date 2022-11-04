@@ -25,6 +25,7 @@ fileinfo
 filter
 ftp
 gd
+gmp
 hash
 iconv
 json
@@ -50,9 +51,11 @@ SPL
 sqlite3
 standard
 tokenizer
+xlswriter
 xml
 xmlreader
 xmlwriter
+xsl
 Zend OPcache
 zip
 zlib

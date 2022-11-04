@@ -7,11 +7,12 @@ WORKDIR /srv
 
 # Install php extension supervisor and nginx
 RUN apk update && \
-	apk add libpng libpng-dev zlib zlib-dev oniguruma oniguruma-dev libjpeg-turbo-dev libpng-dev freetype-dev libzip libzip-dev supervisor nginx bash && \
+	apk add libpng libpng-dev gmp gmp-dev zlib zlib-dev oniguruma oniguruma-dev libjpeg-turbo-dev libpng-dev freetype-dev libzip libzip-dev libxslt libxslt-dev supervisor nginx bash && \
 	docker-php-ext-configure gd --with-freetype --with-jpeg && \
 	yes "" | pecl install redis && \
-	docker-php-ext-install -j5 gd mbstring mysqli pdo pdo_mysql opcache sockets zip bcmath exif && \
-    docker-php-ext-enable redis && \
+	yes "" | pecl install xlswriter && \
+	docker-php-ext-install -j5 bcmath gd gmp mbstring mysqli pdo pdo_mysql opcache sockets xsl zip exif && \
+    docker-php-ext-enable redis xlswriter && \
 	rm -rf /var/cache/apk/* && \
 	rm -rf /etc/nginx/sites-enabled/* && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
