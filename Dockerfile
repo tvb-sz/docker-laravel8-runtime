@@ -12,7 +12,7 @@ RUN apk update && \
 	yes "" | pecl install redis && \
 	yes "" | pecl install xlswriter && \
 	docker-php-ext-install -j5 pcntl bcmath gd gmp mbstring mysqli pdo pdo_mysql opcache sockets xsl zip exif && \
-    docker-php-ext-enable redis xlswriter pcntl && \
+    docker-php-ext-enable redis xlswriter && \
 	rm -rf /var/cache/apk/* && \
 	rm -rf /etc/nginx/sites-enabled/* && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
